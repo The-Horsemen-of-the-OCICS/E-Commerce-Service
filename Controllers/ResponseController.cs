@@ -18,6 +18,13 @@ public class ResponseController : ControllerBase{
     public async Task<List<Response>> Get() {
         return await _responseService.GetAsync();
     } 
+    
+/// GET API return number of responses of a question
+    [HttpGet("count/{questionId}")]
+    public async Task<ActionResult<int>> GetResponseCountByQuestionId(string questionId) {
+        var response = await _responseService.GetResponseCountByQuestionIdAsync(questionId);
+        return response;
+    }
 
 /// GET API return a specific response
     [HttpGet("{Id}")]

@@ -21,6 +21,17 @@ builder.Services.AddSingleton<QuestionService>();
 // Swagger options
 builder.Services.AddSwaggerGen(options => options.SwaggerGeneratorOptions.DescribeAllParametersInCamelCase = true);
 
+
+// COR
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("*");
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 
 app.UseHttpsRedirection();
 

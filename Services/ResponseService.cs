@@ -3,8 +3,10 @@ using ecommerceapp.models;
 namespace ecommerceapp.services;
 public class ResponseService {
     private List<Response> responses = new List<Response> () {
-        new Response("1", "1", "0", "Good", "2022-1-13"),
-        new Response("2", "2", "0", "Bad", "2022-1-13")
+        new Response("1", "1", "0", "Yes it is free", "2022-1-13", 1),
+        new Response("2", "1", "0", "Yes it is free!!!", "2022-1-13", 3),
+        new Response("3", "2", "0", "Yes it does", "2022-1-13", 2),
+        new Response("4", "2", "0", "I don't know", "2022-1-13", 1)
     };
 
     public ResponseService() {
@@ -29,6 +31,10 @@ public class ResponseService {
 
     public async Task<Response> GetAsync(string Id) {
         return responses.Find(x => x.Id == Id);
+    }
+
+    public async Task<int> GetResponseCountByQuestionIdAsync(string QuestionId) {
+        return responses.Count(x => x.QuestionId == QuestionId);
     }
 
     public async Task<bool> UpdateAsync(string Id, Response updatedResponse) {
