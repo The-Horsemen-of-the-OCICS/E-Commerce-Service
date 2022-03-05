@@ -5,8 +5,8 @@ public class QuestionService {
     // ResponseService to get responses
     private readonly ResponseService _responseService;
     private List<Question> questions = new List<Question> () {
-        new Question("1", "1", "What", "2022-1-12"),
-        new Question("2", "2", "Where", "2022-1-12")
+        new Question("1", "1", "Is shipping free", "Hi I wonder if shipping is free???", "2022-1-12", 1),
+        new Question("2", "2", "Do you ship to Canada", "Does this ship to Canada?", "2022-1-12", 1)
     };
 
     public QuestionService(ResponseService responseService) {
