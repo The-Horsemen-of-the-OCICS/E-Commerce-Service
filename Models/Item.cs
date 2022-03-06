@@ -7,6 +7,7 @@ public class Item {
     public string Image { get; set; }
     public DateTime Date { get; set; }
     
+    public Item(){}
     public Item(string Id, string Name, string Description, double Price, string Image, string Date) {
         this.Id = Id;
         this.Name = Name;

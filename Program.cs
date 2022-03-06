@@ -29,6 +29,8 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder.WithOrigins("*");
+            builder.WithMethods("POST");
+            builder.WithHeaders("Content-Type");
         });
 });
 
