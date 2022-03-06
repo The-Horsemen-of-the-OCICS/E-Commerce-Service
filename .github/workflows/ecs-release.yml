@@ -7,8 +7,8 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: 336929397355.dkr.ecr.us-east-1.amazonaws.com
-  ECS_SERVICE: CSI5112EcommerceService
+  ECR_REPOSITORY: 504871976134.dkr.ecr.us-east-1.amazonaws.com
+  ECS_SERVICE: CSI5112Service
   ECS_CLUSTER: CSI5112
 
 jobs:
@@ -30,6 +30,6 @@ jobs:
       run: |
         aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 336929397355.dkr.ecr.us-east-1.amazonaws.com
         docker build -t csi5112ecommerce .
-        docker tag csi5112ecommerce:latest 336929397355.dkr.ecr.us-east-1.amazonaws.com/csi5112ecommerce:latest
-        docker push 336929397355.dkr.ecr.us-east-1.amazonaws.com/csi5112ecommerce:latest
+        docker tag csi5112ecommerce:latest 504871976134.dkr.ecr.us-east-1.amazonaws.com/csi5112ecommerce:latest
+        docker push 504871976134.dkr.ecr.us-east-1.amazonaws.com/csi5112ecommerce:latest
         aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --region $AWS_REGION
