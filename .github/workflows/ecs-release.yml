@@ -28,7 +28,7 @@ jobs:
         
     - name: Docker build
       run: |
-        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 336929397355.dkr.ecr.us-east-1.amazonaws.com
+        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 504871976134.dkr.ecr.us-east-1.amazonaws.com
         docker build -t csi5112ecommerce .
         docker tag csi5112ecommerce:latest 504871976134.dkr.ecr.us-east-1.amazonaws.com/csi5112ecommerce:latest
         docker push 504871976134.dkr.ecr.us-east-1.amazonaws.com/csi5112ecommerce:latest
