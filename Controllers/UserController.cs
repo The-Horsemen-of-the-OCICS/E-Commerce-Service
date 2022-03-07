@@ -48,6 +48,17 @@ public class UserController : ControllerBase{
         return NoContent();
     }
 
+/// PUT API update a user's default shipping info
+    [HttpPut("shippingInfo/{id}")]
+    public async Task<ActionResult> UpdateShippingInfo(string Id, ShippingInfo newInfo) {
+        bool updated = await _userService.UpdateShippingInfoAsync(Id, newInfo);
+        if (!updated) {
+            // this assumes that a failed update is always caused by the object 
+            // not being found. This needs to be changed if the cause may be different
+            return NotFound();
+        } 
+        return NoContent();
+    }
 
 /// DELETE API delete a user
     [HttpDelete("{id}")]
