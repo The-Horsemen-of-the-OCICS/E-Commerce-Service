@@ -30,6 +30,12 @@ public class OrderController : ControllerBase{
         return order;
     }
 
+/// GET API return orders by user ID
+    [HttpGet("u/{userId}")]
+    public async Task<List<Order>> GetByUserId(string userId) {
+        return await _orderService.GetByUserIdAsync(userId);
+    }
+
 /// POST API add a order
     [HttpPost]
     public async Task<ActionResult> Post(Order newOrder) {
