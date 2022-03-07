@@ -5,13 +5,15 @@ public class Order {
     public string UserId { get; set; }
     public double OverallPrice { get; set; }
     public DateTime Date { get; set; }
+    public string shippingAddress { get; set; }
     public Order(){}
 
-    public Order(string Id, string ItemId, string UserId, double OverallPrice, string Date) {
+    public Order(string Id, string ItemId, string UserId, double OverallPrice, string Date,  string shippingAddress) {
         this.Id = Id;
         this.ItemId = ItemId;
         this.UserId = UserId;
         this.OverallPrice = OverallPrice;
         this.Date = DateTime.Parse(Date);
+        this.shippingAddress = shippingAddress;
     }
 }
