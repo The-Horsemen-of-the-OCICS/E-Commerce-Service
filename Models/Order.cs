@@ -1,16 +1,17 @@
 namespace ecommerceapp.models;
 public class Order {
     public string Id { get; set; }
-    public string ItemId { get; set; }
+    public List Cart { get; set; }
     public string UserId { get; set; }
-    public double Price { get; set; }
+    public double OverallPrice { get; set; }
     public DateTime Date { get; set; }
     public Order(){}
-    public Order(string Id, string ItemId, string UserId, double Price, string Date) {
+
+    public Order(string Id, string ItemId, string UserId, double OverallPrice, string Date) {
         this.Id = Id;
         this.ItemId = ItemId;
         this.UserId = UserId;
-        this.Price = Price;
+        this.OverallPrice = OverallPrice;
         this.Date = DateTime.Parse(Date);
     }
 }
