@@ -1,5 +1,7 @@
 using ecommerceapp.services;
 
+var  AllowSpecificOrigins = "_allowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,13 +27,11 @@ builder.Services.AddSwaggerGen(options => options.SwaggerGeneratorOptions.Descri
 // COR
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
-        builder =>
-        {
-            builder.WithOrigins("*");
-            builder.WithMethods("POST");
-            builder.WithHeaders("Content-Type");
-        });
+    options.AddPolicy(name: AllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                      });
 });
 
 var app = builder.Build();
@@ -43,7 +43,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+app.UseCors(AllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 
