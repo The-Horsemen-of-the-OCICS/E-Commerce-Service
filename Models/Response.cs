@@ -4,7 +4,7 @@ public class Response {
     public string QuestionId { get; set; }
     public string UserId { get; set; }
     public string Body { get; set; }
-    public DateTime Date { get; set; }
+    public string Date { get; set; }
     public int Upvotes { get; set;}
 
     public Response(string Id, string QuestionId, string UserId, string Body, string Date, int Upvotes) {
@@ -12,7 +12,7 @@ public class Response {
         this.QuestionId = QuestionId;
         this.UserId = UserId;
         this.Body = Body;
-        this.Date = DateTime.Parse(Date);
+        this.Date = DateTime.Parse(Date).ToString();
         this.Upvotes = Upvotes;
     }
 }

@@ -6,7 +6,7 @@ public class Item {
     public double Price { get; set; }
     public string Image { get; set; }
     public string Date { get; set; }
-    
+
     public Item(string Id, string Name, string Description, double Price, string Image, string Date) {
         this.Id = Id;
         this.Name = Name;

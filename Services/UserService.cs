@@ -3,10 +3,10 @@ using ecommerceapp.models;
 namespace ecommerceapp.services;
 public class UserService {
     private List<User> users = new List<User> () {
-        new User("0", "Admin", "Admin@email.com", "hash"),
-        new User("1", "User1", "User1@email.com", "hash"),
-        new User("2", "User2", "User2@email.com", "hash"),
-        new User("3", "User3", "User3@email.com", "hash")
+        new User("0", "Admin", "Admin@email.com", "hash", new List<CartItem>()),
+        new User("1", "User1", "User1@email.com", "hash", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2)}),
+        new User("2", "User2", "User2@email.com", "hash", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2), new CartItem("2", "Silver 1", 15 ,"placeholder", 1)}),
+        new User("3", "User3", "User3@email.com", "hash", new List<CartItem>())
     };
 
     public UserService() {
@@ -20,7 +20,7 @@ public class UserService {
         return users;
     }
 
-    public async Task<User> GetAsync(string Id) {
+    public async Task<User?> GetAsync(string Id) {
         return users.Find(x => x.Id == Id);
     }
 

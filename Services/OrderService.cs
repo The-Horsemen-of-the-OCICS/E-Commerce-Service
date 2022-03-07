@@ -3,8 +3,8 @@ using ecommerceapp.models;
 namespace ecommerceapp.services;
 public class OrderService {
     private List<Order> orders = new List<Order> () {
-        new Order("1", "1", "1", 25, "2022-1-12"),
-        new Order("2", "2", "2", 15, "2022-1-13")
+        new Order("1", "1", new List<CartItem>(), 25, "2022-1-12", "Ottawa"),
+        new Order("2", "2", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2)}, 15, "2022-1-13", "Toronto")
     };
 
     public OrderService() {
