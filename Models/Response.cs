@@ -6,7 +6,7 @@ public class Response {
     public string Body { get; set; }
     public DateTime Date { get; set; }
     public int Upvotes { get; set;}
-    public Response(){}
+
     public Response(string Id, string QuestionId, string UserId, string Body, string Date, int Upvotes) {
         this.Id = Id;
         this.QuestionId = QuestionId;

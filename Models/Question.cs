@@ -6,7 +6,6 @@ public class Question {
     public string Body { get; set; }
     public DateTime Date { get; set; }
     public int Upvotes { get; set;}
-    public Question(){}
 
     public Question(string Id, string UserId, string Title, string Body, string Date, int Upvotes) {
         this.Id = Id;

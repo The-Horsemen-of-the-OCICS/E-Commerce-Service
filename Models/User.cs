@@ -5,7 +5,6 @@ public class User {
     public string Email { get; set; }
     public string Password { get; set; }
 
-    public User(){}
     public User(string Id, string Name, string Email, string Password) {
         this.Id = Id;
         this.Name = Name;
