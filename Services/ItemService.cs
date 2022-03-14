@@ -3,9 +3,9 @@ using ecommerceapp.models;
 namespace ecommerceapp.services;
 public class ItemService {
     private List<Item> items = new List<Item> () {
-        new Item("1", "Gold 1", "metal", 25 ,"placeholder", "2022-1-12"),
-        new Item("2", "Silver 1", "metal", 15, "placeholder", "2022-1-12"),
-        new Item("3", "Bronze 1", "metal", 5, "placeholder", "2022-1-12")
+        new Item("1", "Gold 1", "metal", 25 ,"placeholder", "2022-1-12", "1"),
+        new Item("2", "Silver 1", "metal", 15, "placeholder", "2022-1-12", "2"),
+        new Item("3", "Bronze 1", "metal", 5, "placeholder", "2022-1-12", "3")
     };
 
     public ItemService() {
