@@ -17,7 +17,13 @@ public class ItemController : ControllerBase{
     [HttpGet]
     public async Task<List<Item>> Get() {
         return await _itemService.GetAsync();
-    } 
+    }
+
+/// GET API return a list of items with a specific category
+    [HttpGet("category/{categoryId}")]
+    public async Task<List<Item>> GetByCategoryId(string categoryId) {
+        return await _itemService.GetByCategoryIdAsync(categoryId);
+    }
 
 
 /// GET API return a specific item
