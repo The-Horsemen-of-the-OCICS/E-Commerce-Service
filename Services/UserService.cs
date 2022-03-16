@@ -9,10 +9,10 @@ public class UserService {
         "ON",
         "Canada");
     private List<User> users = new List<User> () {
-        new User("0", "Admin", "admin@email.com", "hash", new List<CartItem>(), mockShippingInfo),
-        new User("1", "Test Costomer 1", "user1@email.com", "hash", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2)}, mockShippingInfo),
-        new User("2", "Test Costomer 2", "user2@email.com", "hash", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2), new CartItem("2", "Silver 1", 15 ,"placeholder", 1)}, mockShippingInfo),
-        new User("3", "Test Costomer 3", "user3@email.com", "hash", new List<CartItem>(), mockShippingInfo)
+        new User("0", "Admin", "admin@gmail.com", "hash", new List<CartItem>(), mockShippingInfo),
+        new User("1", "Test Costomer 1", "user1@gmail.com", "hash", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2)}, mockShippingInfo),
+        new User("2", "Test Costomer 2", "user2@gmail.com", "hash", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2), new CartItem("2", "Silver 1", 15 ,"placeholder", 1)}, mockShippingInfo),
+        new User("3", "Test Costomer 3", "user3@gmail.com", "hash", new List<CartItem>(), mockShippingInfo)
     };
     public UserService() {
     }
