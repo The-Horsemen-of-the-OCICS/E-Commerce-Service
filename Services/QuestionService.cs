@@ -13,18 +13,22 @@ public class QuestionService {
         this._responseService = responseService;
     }
 
+/// Create a question
     public async Task CreateAsync(Question newQuestion) {
         questions.Add(newQuestion);
     }
 
+/// Get all questions
     public async Task<List<Question>> GetAsync() {
         return questions;
     }
 
+/// Get a specific question by id
     public async Task<Question?> GetAsync(string Id) {
         return questions.Find(x => x.Id == Id);
     }
 
+/// Update a specific question by id
     public async Task<bool> UpdateAsync(string Id, Question updatedQuestion) {
         bool result = false;
         int index = questions.FindIndex(x => x.Id == Id);
@@ -36,6 +40,7 @@ public class QuestionService {
         return result;
     }
 
+/// Delete a specific question by id
     public async Task<bool> DeleteAsync(string Id) {
         bool deleted = false;
         int index = questions.FindIndex(x => x.Id == Id);

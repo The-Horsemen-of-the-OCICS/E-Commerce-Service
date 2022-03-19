@@ -22,7 +22,7 @@ public class CategoryService {
         return categories;
     }
 
-/// Get a category by id
+/// Get a specific category by id
     public async Task<Category?> GetAsync(string Id) {
         return categories.Find(x => x.Id == Id);
     }

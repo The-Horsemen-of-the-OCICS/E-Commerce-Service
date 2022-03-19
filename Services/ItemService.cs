@@ -20,22 +20,27 @@ public class ItemService {
     public ItemService() {
     }
 
+/// Create a new item
     public async Task CreateAsync(Item newItem) {
         items.Add(newItem);
     }
 
+/// Get all items in database
     public async Task<List<Item>> GetAsync() {
         return items;
     }
 
+/// Get a list of items by category
     public async  Task<List<Item>> GetByCategoryIdAsync(string categoryId) {
         return items.FindAll(x => x.CategoryId == categoryId) ?? new List<Item>();
     }
 
+/// Get a specific item by id
     public async Task<Item?> GetAsync(string Id) {
         return items.Find(x => x.Id == Id);
     }
 
+/// Update a specific item by id
     public async Task<bool> UpdateAsync(string Id, Item updatedItem) {
         bool result = false;
         int index = items.FindIndex(x => x.Id == Id);
@@ -47,6 +52,7 @@ public class ItemService {
         return result;
     }
 
+/// Delete a specific item by id
     public async Task<bool> DeleteAsync(string Id) {
         bool deleted = false;
         int index = items.FindIndex(x => x.Id == Id);

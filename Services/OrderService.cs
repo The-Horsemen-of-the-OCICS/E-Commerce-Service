@@ -10,21 +10,27 @@ public class OrderService {
     public OrderService() {
     }
 
+/// Create a new order
     public async Task CreateAsync(Order newOrder) {
         orders.Add(newOrder);
     }
 
+/// Get all orders
     public async Task<List<Order>> GetAsync() {
         return orders;
     }
 
+/// Get a specific order by id
     public async Task<Order?> GetAsync(string Id) {
         return orders.Find(x => x.Id == Id);
     }
+
+/// Get a list of orders of a user by user id  
     public async Task<List<Order>> GetByUserIdAsync(string UserId) {
         return orders.FindAll(x => x.UserId == UserId);
     }
 
+/// Update a specific order by id
     public async Task<bool> UpdateAsync(string Id, Order updatedOrder) {
         bool result = false;
         int index = orders.FindIndex(x => x.Id == Id);
@@ -36,6 +42,7 @@ public class OrderService {
         return result;
     }
 
+/// Delete a specific order by id
     public async Task<bool> DeleteAsync(string Id) {
         bool deleted = false;
         int index = orders.FindIndex(x => x.Id == Id);
