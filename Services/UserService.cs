@@ -17,18 +17,22 @@ public class UserService {
     public UserService() {
     }
 
+/// Create a user
     public async Task CreateAsync(User newUser) {
         users.Add(newUser);
     }
 
+/// Get all users in database
     public async Task<List<User>> GetAsync() {
         return users;
     }
 
+/// Get a specific user by id
     public async Task<User?> GetAsync(string Id) {
         return users.Find(x => x.Id == Id);
     }
 
+/// Update a specific user by id
     public async Task<bool> UpdateAsync(string Id, User updatedUser) {
         bool result = false;
         int index = users.FindIndex(x => x.Id == Id);
@@ -39,6 +43,8 @@ public class UserService {
         }
         return result;
     }
+
+/// Update only shipping info for a specific user by id
     public async Task<bool> UpdateShippingInfoAsync(string Id, ShippingInfo newInfo) {
         bool result = false;
         int index = users.FindIndex(x => x.Id == Id);
@@ -49,7 +55,7 @@ public class UserService {
         return result;
     }
 
-
+/// Delete a specific user by id
     public async Task<bool> DeleteAsync(string Id) {
         bool deleted = false;
         int index = users.FindIndex(x => x.Id == Id);

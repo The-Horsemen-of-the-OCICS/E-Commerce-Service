@@ -12,18 +12,22 @@ public class CategoryService {
     public CategoryService() {
     }
 
+/// Create a new category
     public async Task CreateAsync(Category newCategory) {
         categories.Add(newCategory);
     }
 
+/// Get all categories in database
     public async Task<List<Category>> GetAsync() {
         return categories;
     }
 
+/// Get a category by id
     public async Task<Category?> GetAsync(string Id) {
         return categories.Find(x => x.Id == Id);
     }
 
+/// Update a specific category by id
     public async Task<bool> UpdateAsync(string Id, Category updatedCategory) {
         bool result = false;
         int index = categories.FindIndex(x => x.Id == Id);
@@ -35,6 +39,7 @@ public class CategoryService {
         return result;
     }
 
+/// Delete a specific category by id
     public async Task<bool> DeleteAsync(string Id) {
         bool deleted = false;
         int index = categories.FindIndex(x => x.Id == Id);

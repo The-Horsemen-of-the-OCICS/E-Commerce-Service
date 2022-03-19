@@ -1,8 +1,11 @@
 namespace ecommerceapp.models;
+
+// The item in a cart or a order, including the information and the quantity selected of a item
 public class CartItem {
     public string Id { get; set; }
     public string Name { get; set; }
     public double ItemPrice { get; set; }
+    // The URI for image
     public string Image { get; set; }
     public int Quantity { get; set; }
 

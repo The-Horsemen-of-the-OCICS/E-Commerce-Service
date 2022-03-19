@@ -1,4 +1,6 @@
 namespace ecommerceapp.models;
+
+// The shipping information of the user, including phone number and address
 public class ShippingInfo {
     public string Phone { get; set; }
     public string Street { get; set; }
