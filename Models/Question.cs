@@ -1,4 +1,6 @@
 namespace ecommerceapp.models;
+
+// The question submitted by the user
 public class Question {
     public string Id { get; set; }
     public string UserId { get; set; }
