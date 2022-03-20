@@ -4,7 +4,9 @@ namespace ecommerceapp.services;
 public class OrderService {
     private List<Order> orders = new List<Order> () {
         new Order("1", "1", "User1", "user1@gmail.com", new List<CartItem>(){new CartItem("1", "Three-Pack Off-White Jersey T-Shirts", 15 ,"placeholder", 2)}, 30, "2022-1-12", "75 Laurier Ave. E, Ottawa, ON, Canada"),
-        new Order("2", "1", "User1", "user1@gmail.com", new List<CartItem>(){new CartItem("1", "Black Relaxed Sweater", 5 ,"placeholder", 2), new CartItem("2", "JW ANDERSON Glass Stand", 25 ,"https://i.postimg.cc/j5kCTjnV/16340030929e7b3bd5c75857d1c040c639acc70476-thumbnail-900x.jpg", 1)}, 35, "2022-1-13", "75 Laurier Ave. E, Ottawa, ON, Canada")
+        new Order("2", "1", "User1", "user1@gmail.com", new List<CartItem>(){new CartItem("1", "Black Relaxed Sweater", 5 ,"placeholder", 2), new CartItem("2", "JW ANDERSON Glass Stand", 25 ,"https://i.postimg.cc/j5kCTjnV/16340030929e7b3bd5c75857d1c040c639acc70476-thumbnail-900x.jpg", 1)}, 35, "2022-1-20", "75 Laurier Ave. E, Ottawa, ON, Canada"),
+        new Order("2", "2", "User2", "user2@gmail.com", new List<CartItem>(){new CartItem("2", "JW ANDERSON Glass Stand", 25 ,"https://i.postimg.cc/j5kCTjnV/16340030929e7b3bd5c75857d1c040c639acc70476-thumbnail-900x.jpg", 1)}, 25, "2022-1-25", "75 Laurier Ave. E, Ottawa, ON, Canada")
+
     };
 
     public OrderService() {
