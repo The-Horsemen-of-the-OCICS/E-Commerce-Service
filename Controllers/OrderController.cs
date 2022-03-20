@@ -36,6 +36,12 @@ public class OrderController : ControllerBase{
         return await _orderService.GetByUserIdAsync(userId);
     }
 
+/// GET API return orders by user email
+    [HttpGet("email/{userEmail}")]
+    public async Task<List<Order>> GetByUserEmail(string userEmail) {
+        return await _orderService.GetByUserEmailAsync(userEmail);
+    }
+
 /// POST API add a order
     [HttpPost]
     public async Task<ActionResult> Post(Order newOrder) {

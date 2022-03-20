@@ -3,8 +3,8 @@ using ecommerceapp.models;
 namespace ecommerceapp.services;
 public class OrderService {
     private List<Order> orders = new List<Order> () {
-        new Order("1", "1", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2)}, 25, "2022-1-12", "Ottawa"),
-        new Order("2", "1", new List<CartItem>(){new CartItem("1", "Silver 1", 50 ,"placeholder", 2)}, 15, "2022-1-13", "Toronto")
+        new Order("1", "1", "User1", "user1@gmail.com", new List<CartItem>(){new CartItem("1", "Gold 1", 50 ,"placeholder", 2)}, 25, "2022-1-12", "Ottawa"),
+        new Order("2", "1", "User1", "user1@gmail.com", new List<CartItem>(){new CartItem("1", "Silver 1", 50 ,"placeholder", 2)}, 15, "2022-1-13", "Toronto")
     };
 
     public OrderService() {
@@ -28,6 +28,11 @@ public class OrderService {
 /// Get a list of orders of a user by user id  
     public async Task<List<Order>> GetByUserIdAsync(string UserId) {
         return orders.FindAll(x => x.UserId == UserId);
+    }
+
+/// Get a list of orders of a user by user email
+    public async Task<List<Order>> GetByUserEmailAsync(string UserEmail) {
+        return orders.FindAll(x => x.UserEmail == UserEmail);
     }
 
 /// Update a specific order by id
