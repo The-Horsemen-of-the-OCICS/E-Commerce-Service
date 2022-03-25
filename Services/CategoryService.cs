@@ -1,52 +1,44 @@
 using ecommerceapp.models;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 
 namespace ecommerceapp.services;
 public class CategoryService {
-    private List<Category> categories = new List<Category> () {
-        new Category("1", "Men", "https://i.postimg.cc/NfRGJDDv/7534386-cardigan-knitwear-women-fashion-clothing-icon.png"),
-        new Category("2", "Women", "https://i.postimg.cc/cLsWDS6f/7534390-women-shirt-tops-fashion-clothing-icon.png"),
-        new Category("3", "Kids", "https://i.postimg.cc/zvbZgzt1/7534391-women-shirt-tops-fashion-clothing-icon.png"),
-        new Category("4", "Home", "https://i.postimg.cc/NjpcSzrS/7534405-makeup-beauty-women-fashion-female-icon.png"),
-    };
+    private readonly IMongoCollection<Category> _categories;
 
-    public CategoryService() {
+    public CategoryService(IOptions<DatabaseSettings> databaseSettings) {
+        var settings = MongoClientSettings.FromConnectionString(databaseSettings.Value.ConnectionString);
+        settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+        var client = new MongoClient(settings);
+        var database = client.GetDatabase(databaseSettings.Value.DatabaseName);
+        _categories = database.GetCollection<Category>("Categories");
     }
 
 /// Create a new category
     public async Task CreateAsync(Category newCategory) {
-        categories.Add(newCategory);
+        newCategory.Id = null;
+        await _categories.InsertOneAsync(newCategory);
     }
 
 /// Get all categories in database
     public async Task<List<Category>> GetAsync() {
-        return categories;
+        return await _categories.Find(_ => true).ToListAsync();
     }
 
 /// Get a specific category by id
     public async Task<Category?> GetAsync(string Id) {
-        return categories.Find(x => x.Id == Id);
+        return await _categories.Find<Category>(x => x.Id == Id).FirstOrDefaultAsync();
     }
 
 /// Update a specific category by id
     public async Task<bool> UpdateAsync(string Id, Category updatedCategory) {
-        bool result = false;
-        int index = categories.FindIndex(x => x.Id == Id);
-        if (index != -1) {
-            updatedCategory.Id = Id;
-            categories[index] = updatedCategory;
-            result = true;
-        }
-        return result;
+        ReplaceOneResult r = await _categories.ReplaceOneAsync(x => x.Id == updatedCategory.Id, updatedCategory);
+        return r.IsModifiedCountAvailable && r.ModifiedCount == 1;
     }
 
 /// Delete a specific category by id
     public async Task<bool> DeleteAsync(string Id) {
-        bool deleted = false;
-        int index = categories.FindIndex(x => x.Id == Id);
-        if (index != -1) {
-            categories.RemoveAt(index);
-            deleted = true;
-        }
-        return deleted;
+        DeleteResult r = await _categories.DeleteOneAsync(x => x.Id == Id);
+        return r.DeletedCount == 1;
     }
 }

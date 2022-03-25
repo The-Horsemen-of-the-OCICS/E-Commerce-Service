@@ -67,7 +67,7 @@ public class UserController : ControllerBase{
         if (user is null) {
             return NotFound();
         }
-        await _userService.DeleteAsync(user.Id);
+        await _userService.DeleteAsync(Id);
         return NoContent();
     }
 }

@@ -1,3 +1,4 @@
+using ecommerceapp.models;
 using ecommerceapp.services;
 
 var  AllowSpecificOrigins = "_allowSpecificOrigins";
@@ -11,7 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<DatabaseSettings>(
+                builder.Configuration.GetSection(nameof(DatabaseSettings)));
+var options = builder.Configuration.GetSection(nameof(DatabaseSettings)).Get<DatabaseSettings>();
+
 // Add services for DI
+builder.Services.AddSingleton<DatabaseSettings>(options);
 builder.Services.AddSingleton<ItemService>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<CategoryService>();

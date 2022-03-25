@@ -1,6 +1,7 @@
 using ecommerceapp.models;
 using ecommerceapp.services;
 using Microsoft.AspNetCore.Mvc;
+using System.Web;
 
 namespace ecommerceapp.controllers;
 
@@ -39,7 +40,7 @@ public class OrderController : ControllerBase{
 /// GET API return orders by user email
     [HttpGet("email/{userEmail}")]
     public async Task<List<Order>> GetByUserEmail(string userEmail) {
-        return await _orderService.GetByUserEmailAsync(userEmail);
+        return await _orderService.GetByUserEmailAsync(HttpUtility.UrlDecode(userEmail));
     }
 
 /// POST API add a order

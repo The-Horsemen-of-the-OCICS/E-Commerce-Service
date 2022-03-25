@@ -21,7 +21,7 @@ public class ResponseController : ControllerBase{
     
 /// GET API return number of responses of a question
     [HttpGet("count/{questionId}")]
-    public async Task<ActionResult<int>> GetResponseCountByQuestionId(string questionId) {
+    public async Task<ActionResult<long>> GetResponseCountByQuestionId(string questionId) {
         var response = await _responseService.GetResponseCountByQuestionIdAsync(questionId);
         return response;
     }
@@ -73,7 +73,7 @@ public class ResponseController : ControllerBase{
         if (response is null) {
             return NotFound();
         }
-        await _responseService.DeleteAsync(response.Id);
+        await _responseService.DeleteAsync(Id);
         return NoContent();
     }
 }
