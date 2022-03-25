@@ -5,12 +5,6 @@ using MongoDB.Driver;
 namespace ecommerceapp.services;
 public class ResponseService {
     private readonly IMongoCollection<Response> _responses;
-    private List<Response> responses = new List<Response> () {
-        new Response("1", "1", "0", "Yes it is free", "2022-1-13", 1),
-        new Response("2", "1", "0", "Yes it is free!!!", "2022-1-13", 3),
-        new Response("3", "2", "0", "Yes it does", "2022-1-13", 2),
-        new Response("4", "2", "0", "I don't know", "2022-1-13", 1)
-    };
 
     public ResponseService(IOptions<DatabaseSettings> databaseSettings) {
         var settings = MongoClientSettings.FromConnectionString(databaseSettings.Value.ConnectionString);
