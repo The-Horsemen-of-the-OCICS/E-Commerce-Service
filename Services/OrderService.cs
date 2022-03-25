@@ -22,7 +22,6 @@ public class OrderService {
 
 /// Get all orders
     public async Task<List<Order>> GetAsync() {
-        return orders;
         return await _orders.Find(_ => true).ToListAsync();
     }
 
