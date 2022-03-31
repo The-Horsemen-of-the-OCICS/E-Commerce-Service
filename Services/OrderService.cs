@@ -26,11 +26,7 @@ public class OrderService {
 
 /// Get all orders
     public async Task<List<Order>> GetAsync() {
-<<<<<<< HEAD
         return await _orders.Find(_ => true).SortByDescending(x => x.OrderDate).ToListAsync();
-=======
-        return await _orders.Find(_ => true).ToListAsync();
->>>>>>> 09f38e2e25139b85bfd02d5c5c07fdf0ee759186
     }
 
 /// Get a specific order by id
