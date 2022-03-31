@@ -55,7 +55,7 @@ public class QuestionController : ControllerBase{
         if (question is null) {
             return NotFound();
         }
-        await _questionService.DeleteAsync(question.Id);
+        await _questionService.DeleteAsync(Id);
         return NoContent();
     }
 }

@@ -63,7 +63,7 @@ public class ItemController : ControllerBase{
         if (item is null) {
             return NotFound();
         }
-        await _itemService.DeleteAsync(item.Id);
+        await _itemService.DeleteAsync(Id);
         return NoContent();
     }
 }

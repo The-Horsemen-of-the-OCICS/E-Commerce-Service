@@ -29,6 +29,16 @@ public class UserController : ControllerBase{
         return user;
     }
 
+/// GET API return a specific user by email
+    [HttpGet("email/{email}")]
+    public async Task<ActionResult<User>> GetByEmail(string email) {
+        var user = await _userService.GetByEmailAsync(email);
+        if (user is null) {
+            return NotFound();
+        }
+        return user;
+    }
+
 /// POST API add a user
     [HttpPost]
     public async Task<ActionResult> Post(User newUser) {

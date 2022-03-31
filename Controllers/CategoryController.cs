@@ -56,7 +56,7 @@ public class CategoryController : ControllerBase{
         if (category is null) {
             return NotFound();
         }
-        await _categoryService.DeleteAsync(category.Id);
+        await _categoryService.DeleteAsync(Id);
         return NoContent();
     }
 }

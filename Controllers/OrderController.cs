@@ -70,7 +70,7 @@ public class OrderController : ControllerBase{
         if (order is null) {
             return NotFound();
         }
-        await _orderService.DeleteAsync(order.Id);
+        await _orderService.DeleteAsync(Id);
         return NoContent();
     }
 }

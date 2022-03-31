@@ -30,6 +30,11 @@ public class UserService {
         return await _users.Find<User>(x => x.Id == Id).FirstOrDefaultAsync();
     }
 
+/// Get a specific user by email
+    public async Task<User?> GetByEmailAsync(string email) {
+        return await _users.Find<User>(x => x.Email == email).FirstOrDefaultAsync();
+    }
+
 /// Update a specific user by id
     public async Task<bool> UpdateAsync(string Id, User updatedUser) {
         ReplaceOneResult r = await _users.ReplaceOneAsync(x => x.Id == updatedUser.Id, updatedUser);
