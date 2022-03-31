@@ -5,7 +5,7 @@ using MongoDB.Driver;
 namespace ecommerceapp.services;
 public class ItemService {
     private readonly IMongoCollection<Item> _items;
-
+    
     public ItemService(IOptions<DatabaseSettings> databaseSettings) {
         var settings = MongoClientSettings.FromConnectionString(databaseSettings.Value.ConnectionString);
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
@@ -22,12 +22,12 @@ public class ItemService {
 
 /// Get all items in database
     public async Task<List<Item>> GetAsync() {
-        return await _items.Find(_ => true).ToListAsync();
+        return await _items.Find(_ => true).SortByDescending(x => x.Date).ToListAsync();
     }
 
 /// Get a list of items by category
     public async  Task<List<Item>> GetByCategoryIdAsync(string categoryId) {
-        return await _items.Find<Item>(x => x.CategoryId == categoryId).ToListAsync();
+        return await _items.Find<Item>(x => x.CategoryId == categoryId).SortByDescending(x => x.Date).ToListAsync();
     }
 
 /// Get a specific item by id
