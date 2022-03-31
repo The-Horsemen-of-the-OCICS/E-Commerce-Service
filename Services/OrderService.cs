@@ -31,7 +31,7 @@ public class OrderService {
 
 /// Get a list of orders of a user by user id  
     public async Task<List<Order>> GetByUserIdAsync(string userId) {
-        return await _orders.Find<Order>(x => x.UserId == userId).ToListAsync();
+        return await _orders.Find<Order>(x => x.UserId == userId).SortByDescending(x => x.OrderDate).ToListAsync();
     }
 
 /// Get a list of orders of a user by user email
