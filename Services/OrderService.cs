@@ -5,7 +5,11 @@ using MongoDB.Driver;
 namespace ecommerceapp.services;
 public class OrderService {
     private readonly IMongoCollection<Order> _orders;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 09f38e2e25139b85bfd02d5c5c07fdf0ee759186
     public OrderService(IOptions<DatabaseSettings> databaseSettings) {
         var settings = MongoClientSettings.FromConnectionString(databaseSettings.Value.ConnectionString);
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
@@ -22,7 +26,11 @@ public class OrderService {
 
 /// Get all orders
     public async Task<List<Order>> GetAsync() {
+<<<<<<< HEAD
         return await _orders.Find(_ => true).SortByDescending(x => x.OrderDate).ToListAsync();
+=======
+        return await _orders.Find(_ => true).ToListAsync();
+>>>>>>> 09f38e2e25139b85bfd02d5c5c07fdf0ee759186
     }
 
 /// Get a specific order by id
