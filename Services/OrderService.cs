@@ -5,11 +5,6 @@ using MongoDB.Driver;
 namespace ecommerceapp.services;
 public class OrderService {
     private readonly IMongoCollection<Order> _orders;
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 09f38e2e25139b85bfd02d5c5c07fdf0ee759186
     public OrderService(IOptions<DatabaseSettings> databaseSettings) {
         var settings = MongoClientSettings.FromConnectionString(databaseSettings.Value.ConnectionString);
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
