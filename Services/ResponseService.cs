@@ -27,7 +27,7 @@ public class ResponseService {
 
 /// Get all responses for a question by question id
     public async Task<List<Response>> GetByQuestionAsync(string questionId) {
-        return await _responses.Find<Response>(x => x.QuestionId == questionId).SortByDescending(x => x.Date).ToListAsync();
+        return await _responses.Find<Response>(x => x.QuestionId == questionId).SortBy(x => x.Date).ToListAsync();
     }
 
 /// Get a specific response by id
