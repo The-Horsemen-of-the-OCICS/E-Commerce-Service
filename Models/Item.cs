@@ -27,6 +27,9 @@ public class Item {
 /// The category which the item belongs to
     [BsonRepresentation(BsonType.ObjectId)][JsonPropertyName("categoryId")]
     public string CategoryId {get; set;}
+ /// The item is deleted or not
+    [JsonPropertyName("isDeleted")]
+    public bool IsDeleted {get; set;}   
 
     public Item(string Id, string Name, string Description, double Price, string Image, string Date, string CategoryId) {
         this.Id = Id;
@@ -36,5 +39,6 @@ public class Item {
         this.Image = Image;
         this.Date = DateTime.Parse(Date).ToString();
         this.CategoryId = CategoryId;
+        this.IsDeleted = false;
     }
 }

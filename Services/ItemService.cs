@@ -22,12 +22,12 @@ public class ItemService {
 
 /// Get all items in database
     public async Task<List<Item>> GetAsync() {
-        return await _items.Find(_ => true).SortByDescending(x => x.Date).ToListAsync();
+        return await _items.Find(x => x.IsDeleted == false).SortByDescending(x => x.Date).ToListAsync();
     }
 
 /// Get a list of items by category
     public async  Task<List<Item>> GetByCategoryIdAsync(string categoryId) {
-        return await _items.Find<Item>(x => x.CategoryId == categoryId).SortByDescending(x => x.Date).ToListAsync();
+        return await _items.Find<Item>(x => x.CategoryId == categoryId && x.IsDeleted == false).SortByDescending(x => x.Date).ToListAsync();
     }
 
 /// Get a specific item by id
@@ -43,7 +43,8 @@ public class ItemService {
 
 /// Delete a specific item by id
     public async Task<bool> DeleteAsync(string Id) {
-         DeleteResult r = await _items.DeleteOneAsync(x => x.Id == Id);
-        return r.DeletedCount == 1;
+        UpdateResult r = await _items.UpdateOneAsync(x => x.Id == Id, Builders<Item>.Update
+                            .Set(i => i.IsDeleted, true));
+        return r.IsModifiedCountAvailable && r.ModifiedCount == 1;
     }
 }
